@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gerenciador de Atividades</title>
+    <link rel="stylesheet" href="estilo.css" />
+    <script src="listaEncadeada.js" defer></script>
+    <script src="gerenciador.js" defer></script>
+    <script src="atividade.js" defer></script>
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <h1>Controle de Atividades - Lista de Tarefas</h1>
+      </header>
+      <section
+        id="msg-remocao"
+        class="alert alert-warning"
+        style="display: none"
+      ></section>
+      <main>
+        <h2>Adicionar Nova Atividade</h2>
+        <form id="form-atividade" class="task-form">
+          <div class="form-group">
+            <label for="txtnovaAtividade">Atividade:</label>
+            <input
+              type="text"
+              id="txtnovaAtividade"
+              required
+              placeholder="Digite a atividade..."
+            />
+          </div>
+          <div class="form-group">
+            <label for="txtnovaUrgencia">Urgência:</label>
+            <input
+              type="number"
+              id="txtnovaUrgencia"
+              min="1"
+              required
+              placeholder="Digite a urgência..."
+            />
+          </div>
+          <div class="form-actions">
+            <button
+              type="button"
+              class="btn btn-info"
+              onclick="incluirAtividade()"
+            >
+              Adicionar
+            </button>
+            <button
+              type="button"
+              class="btn btn-info"
+              onclick="completarAtividade()"
+            >
+              Concluir
+            </button>
+            <button
+              type="button"
+              class="btn btn-info"
+              onclick="atividadeMaisAntiga()"
+            >
+              Mais Antiga
+            </button>
+          </div>
+        </form>
+        <div class="storage-actions">
+          <button class="btn btn-warning" onclick="salvarLista()">
+            Salvar
+          </button>
+          <button class="btn btn-warning" onclick="carregarLista()">
+            Carregar
+          </button>
+        </div>
+        <p id="instruction">Clique em uma tarefa para removê-la</p>
+        <section>
+          <h2 id="lblAtividades">
+            Lista de Atividades
+          </h2>
+          <ul id="listaAtividades"></ul>
+        </section>
+      </main>
+    </div>
+  </body>
+
+  <div id="modal-confirmacao" class="modal">
+    <div class="modal-conteudo">
+      <p>Deseja realmente remover esta tarefa?</p>
+      <button id="btn-sim" class="btn-modal">Sim</button>
+      <button id="btn-nao" class="btn-modal">Não</button>
+    </div>
+  </div>
+</html>
